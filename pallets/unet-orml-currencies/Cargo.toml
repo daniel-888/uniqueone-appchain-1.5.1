@@ -1,0 +1,46 @@
+[package]
+authors = ['Unique One <hello@uniqueone.network>']
+description = "Provide `MultiCurrency` implementation using `pallet-balances` and `orml-tokens` module."
+edition = '2018'
+homepage = 'https://uniqueone.network'
+license = 'Apache-2.0'
+name = 'unet-orml-currencies'
+readme = 'README.md'
+repository = 'https://github.com/Unique-One-Official/uniqueone-appchain'
+version = '0.4.1-dev'
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { package = 'parity-scale-codec', version = '2.2', default-features = false, features = ['derive', 'max-encoded-len'] }
+serde = { version = '1.0.130', default-features = false, features = ['derive'], optional = true }
+scale-info = { version = '1.0', default-features = false, features = ['derive'] }
+
+sp-io = { default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.13' }
+sp-std = { default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.13' }
+sp-runtime = { default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.13' }
+frame-support = { default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.13' }
+frame-system = { default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.13' }
+unet-orml-traits = { version = "0.4.1-dev", default-features = false, path = "../unet-orml-traits" }
+unet-orml-utilities = { version = "0.4.1-dev", default-features = false, path = "../unet-orml-utilities" }
+
+[dev-dependencies]
+sp-core = { git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.13' }
+pallet-balances = { git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.13' }
+unet-orml-tokens = { version = "0.4.1-dev", package = "unet-orml-tokens", path = "../unet-orml-tokens" }
+
+[features]
+default = ['std']
+std = [
+	"serde",
+	"codec/std",
+    "sp-io/std",
+	"sp-std/std",
+    "sp-runtime/std",
+    "frame-support/std",
+    "frame-system/std",
+	"unet-orml-traits/std",
+    "unet-orml-utilities/std",
+
+]
